@@ -1,11 +1,6 @@
 import request from 'umi-request';
 import { TableListParams } from './data.d';
 
-export async function queryRule(params?: TableListParams) {
-  return request('/api/rule', {
-    params,
-  });
-}
 
 export function getAccountList(params?: TableListParams) {
   return request('/test/accounts', {
@@ -14,18 +9,8 @@ export function getAccountList(params?: TableListParams) {
 }
 
 
-export async function removeRule(params: { key: number[] }) {
-  return request('/api/rule', {
-    method: 'POST',
-    data: {
-      ...params,
-      method: 'delete',
-    },
-  });
-}
-
-export async function addRule(params: TableListParams) {
-  return request('/api/rule', {
+export async function addAccount(params: TableListParams) {
+  return request('/test/account', {
     method: 'POST',
     data: {
       ...params,
@@ -34,9 +19,9 @@ export async function addRule(params: TableListParams) {
   });
 }
 
-export async function updateRule(params: TableListParams) {
-  return request('/api/rule', {
-    method: 'POST',
+export async function updateAccount(params: TableListParams) {
+  return request(`/test/account/${params.id}`, {
+    method: 'PUT',
     data: {
       ...params,
       method: 'update',

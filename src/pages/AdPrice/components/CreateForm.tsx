@@ -62,12 +62,12 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
         <FormItem name="account_type" label="账号类型"
                   rules={[{ required: true, message: '请选择账号类型！' }]}
         >
-            <Select style={{ width: '100%' }} placeholder='请选择账号类型！'>
-                <Option value="paypal">Paypal</Option>
-                <Option value="stripe">Stripe</Option>
-            </Select>
+          <Select style={{ width: '100%' }} placeholder='请选择账号类型！'>
+            <Option value="paypal">Paypal</Option>
+            <Option value="stripe">Stripe</Option>
+          </Select>
         </FormItem>
-        
+
         <FormItem name="password" label="账号密码">
           <Input placeholder="请输入"/>
         </FormItem>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button, DatePicker, Input, Modal, Radio, Select, Steps } from 'antd';
+import { Form, Button, Input, Modal, Select } from 'antd';
 
 import { TableListItem } from '../data.d';
-
 
 export interface FormValueType extends Partial<TableListItem> {
   id?:number;
@@ -15,10 +14,16 @@ export interface FormValueType extends Partial<TableListItem> {
   client_password?:string;
 }
 
-interface CreateFormProps {
+export interface UpdateFormState {
+  formVals: FormValueType;
+}
+
+
+interface UpdateFormProps {
   onCancel: (flag?: boolean, formVals?: FormValueType) => void;
   onSubmit: (values: FormValueType) => void;
-  createModalVisible: boolean;
+  updateModalVisible: boolean;
+  values: Partial<TableListItem>;
 }
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -31,24 +36,34 @@ const formLayout = {
 
 
 
-const CreateForm: React.FC<CreateFormProps> = (props) => {
-  const { createModalVisible, onCancel } = props;
+const UpdateForm: React.FC<UpdateFormProps> = (props) => {
+  const [formVals, setFormVals] = useState<FormValueType>({
+    id: props.values.id,
+    account: props.values.account,
+    account_type: props.values.account_type,
+    password: props.values.password,
+    charge_percent: props.values.charge_percent,
+    created_at: props.values.created_at,
+    client_id: props.values.client_id,
+    client_password: props.values.client_password,
+  });
 
-  const [formVals] = useState<FormValueType>({});
+
+  const { updateModalVisible, onCancel } = props;
 
   const handleNext = async () => {
     const fieldsValue = await form.validateFields();
 
-    form.resetFields();
-    handleCreate({ ...formVals, ...fieldsValue });
+    setFormVals({ ...formVals, ...fieldsValue });
+    handleUpdate({ ...formVals, ...fieldsValue });
 
   };
 
   const [form] = Form.useForm();
 
   const {
-    onSubmit: handleCreate,
-    onCancel: handleCreateModalVisible,
+    onSubmit: handleUpdate,
+    onCancel: handleUpdateModalVisible,
   } = props;
 
   const renderContent = () => {
@@ -60,14 +75,14 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <Input placeholder="请输入账号"/>
         </FormItem>
         <FormItem name="account_type" label="账号类型"
-                  rules={[{ required: true, message: '请选择账号类型！' }]}
+                  rules={[{ required: true, message: '请输入账号类型！' }]}
         >
-            <Select style={{ width: '100%' }} placeholder='请选择账号类型！'>
-                <Option value="paypal">Paypal</Option>
-                <Option value="stripe">Stripe</Option>
-            </Select>
+          <Select style={{ width: '100%' }}>
+            <Option value="paypal">Paypal</Option>
+            <Option value="stripe">Stripe</Option>
+          </Select>
         </FormItem>
-        
+
         <FormItem name="password" label="账号密码">
           <Input placeholder="请输入"/>
         </FormItem>
@@ -88,7 +103,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
   const renderFooter = () => {
     return (
       <>
-        <Button onClick={() => handleCreateModalVisible(false, formVals)}>取消</Button>
+        <Button onClick={() => handleUpdateModalVisible(false, formVals)}>取消</Button>
         <Button type="primary" onClick={() => handleNext()}>
           提交
         </Button>
@@ -99,15 +114,24 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
   return (
     <Modal
       destroyOnClose
-      title="创建店铺"
-      visible={createModalVisible}
+      title="编辑账号"
+      visible={updateModalVisible}
       footer={renderFooter()}
       onCancel={() => onCancel()}
     >
       <Form
         {...formLayout}
         form={form}
-        initialValues={{}}
+        initialValues={{
+          id:formVals.id,
+          account: formVals.account,
+          account_type: formVals.account_type,
+          password: formVals.password,
+          charge_percent: formVals.charge_percent,
+          created_at: formVals.created_at,
+          client_id: formVals.client_id,
+          client_password: formVals.client_password,
+        }}
       >
         {renderContent()}
       </Form>
@@ -115,4 +139,4 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
   );
 };
 
-export default CreateForm;
+export default UpdateForm;

@@ -101,6 +101,12 @@ export default defineConfig({
               component: './Account',
             },
             {
+              name: '查询表格',
+              icon: 'smile',
+              path: '/',
+              component: './AdPrice',
+            },
+            {
               component: './404',
             },
           ],
