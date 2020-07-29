@@ -1,11 +1,16 @@
 export interface TableListItem {
-  id:number;
-  shop_id:number;
-  shop_name:string;
-  month:string;
-  price:number;
-  type:number;
-  created_at:Date;
+  key: number;
+  disabled?: boolean;
+  href: string;
+  avatar: string;
+  name: string;
+  owner: string;
+  desc: string;
+  callNo: number;
+  status: string;
+  updatedAt: Date;
+  createdAt: Date;
+  progress: number;
 }
 
 export interface TableListPagination {
@@ -20,13 +25,10 @@ export interface TableListData {
 }
 
 export interface TableListParams {
-  id?:number;
-  shop_id?:number;
-  month?:string;
-  shop_name?:string;
-  price?:number;
-  type?:number;
-  created_at?:Date;
+  status?: string;
+  name?: string;
+  desc?: string;
+  key?: number;
   pageSize?: number;
   currentPage?: number;
   filter?: { [key: string]: any[] };

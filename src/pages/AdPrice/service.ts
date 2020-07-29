@@ -1,24 +1,14 @@
 import request from 'umi-request';
 import { TableListParams } from './data.d';
 
-export async function queryRule(params?: TableListParams) {
-  return request('/api/rule', {
+export async function getAdPrice(params?: TableListParams) {
+  return request('/test/ad-prices', {
     params,
   });
 }
 
-export async function removeRule(params: { key: number[] }) {
-  return request('/api/rule', {
-    method: 'POST',
-    data: {
-      ...params,
-      method: 'delete',
-    },
-  });
-}
-
-export async function addRule(params: TableListParams) {
-  return request('/api/rule', {
+export async function addAdPrice(params: TableListParams) {
+  return request('/test/ad-prices', {
     method: 'POST',
     data: {
       ...params,
@@ -27,12 +17,18 @@ export async function addRule(params: TableListParams) {
   });
 }
 
-export async function updateRule(params: TableListParams) {
-  return request('/api/rule', {
-    method: 'POST',
+export async function updateAdPrice(params: TableListParams) {
+  return request(`/test/ad-prices/${params.id}`, {
+    method: 'PUT',
     data: {
       ...params,
       method: 'update',
     },
+  });
+}
+
+export async function getMonthList() {
+  return request('/test/month-list', {
+    
   });
 }

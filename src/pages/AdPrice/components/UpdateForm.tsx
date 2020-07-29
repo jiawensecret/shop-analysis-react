@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { Form, Button, Input, Modal, Select } from 'antd';
 
 import { TableListItem } from '../data.d';
+import { ShopItem } from '../../Shop/data';
 
 export interface FormValueType extends Partial<TableListItem> {
   id?:number;
-  account?:string;
-  account_type?:string;
-  password?:string;
-  charge_percent?:number;
+  shop_id?:number;
+  month?:string;
+  price?:number;
+  type?:number;
   created_at?:Date;
-  client_id?:string;
-  client_password?:string;
 }
 
 export interface UpdateFormState {
@@ -24,9 +23,10 @@ interface UpdateFormProps {
   onSubmit: (values: FormValueType) => void;
   updateModalVisible: boolean;
   values: Partial<TableListItem>;
+  shops:Array<ShopItem>,
+  months:Array<string>
 }
 const FormItem = Form.Item;
-const { TextArea } = Input;
 const { Option } = Select;
 
 const formLayout = {
@@ -39,16 +39,14 @@ const formLayout = {
 const UpdateForm: React.FC<UpdateFormProps> = (props) => {
   const [formVals, setFormVals] = useState<FormValueType>({
     id: props.values.id,
-    account: props.values.account,
-    account_type: props.values.account_type,
-    password: props.values.password,
-    charge_percent: props.values.charge_percent,
+    shop_id: props.values.shop_id,
+    month: props.values.month,
+    price: props.values.price,
+    type: props.values.type,
     created_at: props.values.created_at,
-    client_id: props.values.client_id,
-    client_password: props.values.client_password,
   });
 
-
+  const { shops , months} = props;
   const { updateModalVisible, onCancel } = props;
 
   const handleNext = async () => {
@@ -69,35 +67,37 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
   const renderContent = () => {
     return (
       <>
-        <FormItem name="account" label="账号"
-                  rules={[{ required: true, message: '请输入账号！' }]}
-        >
-          <Input placeholder="请输入账号"/>
-        </FormItem>
-        <FormItem name="account_type" label="账号类型"
-                  rules={[{ required: true, message: '请输入账号类型！' }]}
-        >
-          <Select style={{ width: '100%' }}>
-            <Option value="paypal">Paypal</Option>
-            <Option value="stripe">Stripe</Option>
-          </Select>
-        </FormItem>
+      <FormItem name="shop_id" label="店铺"
+                rules={[{ required: true, message: '请选择店铺！' }]}
+      >
+        <Select style={{ width: '100%' }} placeholder='请选择店铺'>
+          {shops.map(item => {
+            return <Option value={item.id}>{item.name}</Option>
+          })}
+        </Select>
+        
+      </FormItem>
+      <FormItem name="month" label="月份"
+                rules={[{ required: true, message: '请选择月份！' }]}
+      >
+        <Select style={{ width: '100%' }} placeholder='请选择月份'>
+          {months.map(item => {
+            return <Option value={item}>{item}</Option>
+          })}
+        </Select>
+      </FormItem>
+      <FormItem name="price" label="价格">
+        <Input placeholder="请输入价格"/>
+      </FormItem>
+      <FormItem name="type" label="币种">
+        <Select style={{ width: '100%' }} placeholder='请选择币种'>
+            <Option value={0}>人民币</Option>
+            <Option value={1}>美元</Option>
+        </Select>
+      </FormItem>
 
-        <FormItem name="password" label="账号密码">
-          <Input placeholder="请输入"/>
-        </FormItem>
-        <FormItem name="charge_percent" label="账号费率">
-          <Input placeholder="请输入费率 例如0.01"/>
-        </FormItem>
-        <FormItem name="client_id" label="账号client id">
-          <TextArea rows={3} placeholder="请输入client id" />
-        </FormItem>
-        <FormItem name="client_password" label="账号client密码">
-          <TextArea rows={3} placeholder="请输入client密码" />
-        </FormItem>
-
-      </>
-    )
+    </>
+    );
   }
 
   const renderFooter = () => {
@@ -124,13 +124,11 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
         form={form}
         initialValues={{
           id:formVals.id,
-          account: formVals.account,
-          account_type: formVals.account_type,
-          password: formVals.password,
-          charge_percent: formVals.charge_percent,
+          shop_id: formVals.shop_id,
+          month: formVals.month,
+          price: formVals.price,
+          type: formVals.type,
           created_at: formVals.created_at,
-          client_id: formVals.client_id,
-          client_password: formVals.client_password,
         }}
       >
         {renderContent()}

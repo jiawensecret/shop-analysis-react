@@ -41,3 +41,36 @@ export interface TableListParams {
   filter?: { [key: string]: any[] };
   sorter?: { [key: string]: any };
 }
+
+export interface ShopListParams {
+  id?: number;
+  person_id?: number;
+  account_id?: number;
+  name?: string;
+  code?: string;
+  desc?: string;
+  uri?: string;
+  person_name?: string;
+  account_name?: string;
+  charge_percent?: number;
+  pageSize?: number;
+  currentPage?: number;
+  filter?: { [key: string]: any[] };
+  sorter?: { [key: string]: any };
+}
+
+export interface ShopItem {
+  id: number;
+  person_id: number;
+  account_id: number;
+  name: string;
+  code: string;
+  desc: string;
+  uri: string;
+  person_name: string;
+  account_name: string;
+  person: object;
+  account: object;
+  charge_percent: number;
+  created_at: Date;
+}

@@ -7,8 +7,10 @@ import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 import { TableListItem } from './data.d';
-import { getAccountList, updateAccount, addAccount } from './service';
+import { getAdPrice, addAdPrice, updateAdPrice ,getMonthList} from './service';
 
+import { queryShop } from '../Shop/service';
+import { ShopItem } from '../Shop/data';
 
 /**
  * 添加节点
@@ -17,7 +19,7 @@ import { getAccountList, updateAccount, addAccount } from './service';
 const handleAdd = async (fields: FormValueType) => {
   const hide = message.loading('正在添加');
   try {
-    await addAccount({ ...fields });
+    await addAdPrice({ ...fields });
     hide();
     message.success('添加成功');
     return true;
@@ -35,14 +37,12 @@ const handleAdd = async (fields: FormValueType) => {
 const handleUpdate = async (fields: FormValueType) => {
   const hide = message.loading('正在配置');
   try {
-    await updateAccount({
-      account: fields.account,
-      account_type: fields.account_type,
+    await updateAdPrice({
+      month: fields.month,
+      shop_id: fields.shop_id,
       id: fields.id,
-      password: fields.password,
-      client_id: fields.client_id,
-      client_password: fields.client_password,
-      charge_percent: fields.charge_percent,
+      price: fields.price,
+      type: fields.type,
     });
     hide();
 
@@ -55,6 +55,18 @@ const handleUpdate = async (fields: FormValueType) => {
   }
 };
 
+let shops : Array<ShopItem> = [];
+queryShop().then(res => {
+  shops = res.data;
+});
+
+let months : Array<string> = [];
+getMonthList().then(res => {
+  months = res.data;
+})
+
+
+
 const TableList: React.FC<{}> = () => {
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
   const [updateModalVisible, handleUpdateModalVisible] = useState<boolean>(false);
@@ -62,33 +74,29 @@ const TableList: React.FC<{}> = () => {
   const actionRef = useRef<ActionType>();
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '账号',
-      dataIndex: 'account',
+      title: '店铺',
+      dataIndex: 'shop_name',
       valueType: 'textarea',
-      rules: [
-        {
-          required: true,
-          message: '名称为必填项',
-        },
-      ],
     },
     {
-      title: '账号类型',
-      dataIndex: 'account_type',
+      title: '月份',
+      dataIndex: 'month',
+      valueType: 'textarea',
+    },
+    {
+      title: '价格',
+      dataIndex: 'price',
+      valueType: 'textarea',
+    },
+    {
+      title: '币种',
+      dataIndex: 'type',
       valueType: 'textarea',
       hideInSearch:true,
-    },
-    {
-      title: '账号费率',
-      dataIndex: 'charge_percent',
-      valueType: 'textarea',
-      hideInForm:true,
-    },
-    {
-      title: 'Clinet ID',
-      dataIndex: 'client_id',
-      valueType: 'textarea',
-      hideInForm: true
+      valueEnum:{
+        0:'人民币',
+        1:'美元'
+      },
     },
     {
       title: '创建时间',
@@ -128,7 +136,7 @@ const TableList: React.FC<{}> = () => {
             <PlusOutlined /> 新建
           </Button>,
         ]}
-        request={(params, sorter, filter) => getAccountList({ ...params, sorter, filter })}
+        request={(params, sorter, filter) => getAdPrice({ ...params, sorter, filter })}
         columns={columns}
         rowSelection={{}}
       />
@@ -144,6 +152,8 @@ const TableList: React.FC<{}> = () => {
         }}
         onCancel={() => handleModalVisible(false)}
         createModalVisible={createModalVisible}
+        shops={shops}
+        months={months}
       />
       {updateFormValues && Object.keys(updateFormValues).length ? (
         <UpdateForm
@@ -164,6 +174,8 @@ const TableList: React.FC<{}> = () => {
           }}
           updateModalVisible={updateModalVisible}
           values={updateFormValues}
+          shops={shops}
+          months={months}
         />
       ) : null}
 

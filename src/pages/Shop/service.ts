@@ -1,13 +1,13 @@
 import request from 'umi-request';
-import { TableListParams } from './data.d';
+import { ShopListParams } from './data.d';
 
-export async function queryShop(params?: TableListParams) {
+export async function queryShop(params?: ShopListParams) {
   return request('/test/shops', {
     params,
   });
 }
 
-export async function addShop(params: TableListParams) {
+export async function addShop(params: ShopListParams) {
   return request('/test/shops', {
     method: 'POST',
     data: {
@@ -17,7 +17,7 @@ export async function addShop(params: TableListParams) {
   });
 }
 
-export async function updateShop(params: TableListParams) {
+export async function updateShop(params: ShopListParams) {
   return request(`/test/shops/${params.id}`, {
     method: 'PUT',
     data: {

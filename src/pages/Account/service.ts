@@ -10,7 +10,7 @@ export function getAccountList(params?: TableListParams) {
 
 
 export async function addAccount(params: TableListParams) {
-  return request('/test/account', {
+  return request('/test/accounts', {
     method: 'POST',
     data: {
       ...params,
@@ -20,7 +20,7 @@ export async function addAccount(params: TableListParams) {
 }
 
 export async function updateAccount(params: TableListParams) {
-  return request(`/test/account/${params.id}`, {
+  return request(`/test/accounts/${params.id}`, {
     method: 'PUT',
     data: {
       ...params,
