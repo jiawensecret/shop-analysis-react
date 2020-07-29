@@ -1,16 +1,12 @@
-export interface TableListItem {
-  key: number;
-  disabled?: boolean;
-  href: string;
-  avatar: string;
-  name: string;
-  owner: string;
-  desc: string;
-  callNo: number;
-  status: string;
-  updatedAt: Date;
-  createdAt: Date;
-  progress: number;
+export interface VolumeListItem {
+  id: number;
+  person_id: number;
+  person_text:string;
+  month:string;
+  volume:string;
+  total_cost:string;
+  profit:string;
+  exchange:string;
 }
 
 export interface TableListPagination {
@@ -20,15 +16,18 @@ export interface TableListPagination {
 }
 
 export interface TableListData {
-  list: TableListItem[];
+  list: VolumeListItem[];
   pagination: Partial<TableListPagination>;
 }
 
-export interface TableListParams {
-  status?: string;
-  name?: string;
-  desc?: string;
-  key?: number;
+export interface VolumeListParams {
+  id?: number;
+  person_id?: number;
+  month?:string;
+  volume?:string;
+  total_cost?:string;
+  profit?:string;
+  exchange?:string;
   pageSize?: number;
   currentPage?: number;
   filter?: { [key: string]: any[] };

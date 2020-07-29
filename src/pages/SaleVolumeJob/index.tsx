@@ -6,15 +6,19 @@ import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 
 import  CreateForm  from './components/CreateForm';
 
+import { FormValueType } from './components/CreateForm';
+
 import { VolumeJobItem } from './data.d';
 import { getVolumeJob, createVolumeJob } from './service';
+
+import { getMonthList } from '../AdPrice/service';
 
 
 /**
  * 添加节点
  * @param fields
  */
-const handleAdd = async (fields: VolumeJobItem) => {
+const handleAdd = async (fields: FormValueType) => {
   const hide = message.loading('正在添加');
   try {
     await createVolumeJob({ ...fields });
@@ -28,6 +32,10 @@ const handleAdd = async (fields: VolumeJobItem) => {
   }
 };
 
+let months : Array<string> = [];
+getMonthList().then(res => {
+  months = res.data;
+})
 
 const TableList: React.FC<{}> = () => {
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
@@ -77,12 +85,12 @@ const TableList: React.FC<{}> = () => {
   return (
     <PageHeaderWrapper>
       <ProTable<VolumeJobItem>
-        headerTitle="Excel导入任务"
+        headerTitle="利润计算任务"
         actionRef={actionRef}
         rowKey="id"
         toolBarRender={(action, { selectedRows }) => [
           <Button type="primary" onClick={() => handleModalVisible(true)}>
-            <PlusOutlined /> Excel导入
+            <PlusOutlined /> 生成利润报表
           </Button>,
         ]}
         request={(params, sorter, filter) => getVolumeJob({ ...params, sorter, filter })}
@@ -101,6 +109,7 @@ const TableList: React.FC<{}> = () => {
         }}
         onCancel={() => handleModalVisible(false)}
         createModalVisible={createModalVisible}
+        months = {months}
       />
 
     </PageHeaderWrapper>
