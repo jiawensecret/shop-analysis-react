@@ -62,7 +62,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
               return <Option value={item.id}>{item.name}</Option>
             })}
           </Select>
-          
+
         </FormItem>
         <FormItem name="month" label="月份"
                   rules={[{ required: true, message: '请选择月份！' }]}
@@ -97,6 +97,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
       </>
     );
   }
+
 
   return (
     <Modal

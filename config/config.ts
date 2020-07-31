@@ -46,41 +46,7 @@ export default defineConfig({
           routes: [
             {
               path: '/',
-              redirect: '/welcome',
-            },
-            {
-              path: '/welcome',
-              name: 'welcome',
-              icon: 'smile',
-              component: './Welcome',
-            },
-            {
-              path: '/admin',
-              name: 'admin',
-              icon: 'crown',
-              component: './Admin',
-              authority: ['admin'],
-              routes: [
-                {
-                  path: '/admin/sub-page',
-                  name: 'sub-page',
-                  icon: 'smile',
-                  component: './Welcome',
-                  authority: ['admin'],
-                },
-              ],
-            },
-            {
-              name: '标准列表',
-              icon: 'smile',
-              path: '/listbasiclist',
-              component: './ListBasicList',
-            },
-            {
-              name: 'list.table-list',
-              icon: 'table',
-              path: '/list',
-              component: './ListTableList',
+              redirect: '/orders',
             },
             {
               name: '店铺管理',
@@ -125,13 +91,13 @@ export default defineConfig({
               component: './Order',
             },
             {
-              name: '利润计算任务管理',
+              name: '绩效计算任务管理',
               icon: 'smile',
               path: '/sale-volume-job',
               component: './SaleVolumeJob',
             },
             {
-              name: '利润核算列表',
+              name: '绩效核算列表',
               icon: 'smile',
               path: '/sale-volume',
               component: './SaleVolume',

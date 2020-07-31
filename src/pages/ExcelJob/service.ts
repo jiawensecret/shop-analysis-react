@@ -1,5 +1,5 @@
 import request from 'umi-request';
-import { ExcelJobListParams } from './data.d';
+import { ExcelJobListParams,CreateExcelJob } from './data.d';
 
 export async function getExcelJob(params?: ExcelJobListParams) {
   return request('/test/show-excel-job', {
@@ -7,13 +7,10 @@ export async function getExcelJob(params?: ExcelJobListParams) {
   });
 }
 
-export async function createExcelJob(params?: ExcelJobListParams) {
-  return request('/test/excel-job',{
+export async function createExcelJob(params:FormData) {
+  return request('/test/excel/upload',{
     method:'POST',
-    data: {
-      ...params,
-      method: 'post',
-    },
+    data: params,
   })
 }
 

@@ -6,7 +6,7 @@ import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 
 import  CreateForm  from './components/CreateForm';
 
-import { ExcelJobItem ,CreateExcelJob} from './data.d';
+import { ExcelJobItem} from './data.d';
 import { getExcelJob, createExcelJob } from './service';
 
 
@@ -14,10 +14,10 @@ import { getExcelJob, createExcelJob } from './service';
  * 添加节点
  * @param fields
  */
-const handleAdd = async (fields: CreateExcelJob) => {
+const handleAdd = async (fields: FormData) => {
   const hide = message.loading('正在添加');
   try {
-    await createExcelJob({ ...fields });
+    await createExcelJob(fields);
     hide();
     message.success('添加成功');
     return true;
@@ -108,6 +108,8 @@ const TableList: React.FC<{}> = () => {
         }}
         onCancel={() => handleModalVisible(false)}
         createModalVisible={createModalVisible}
+        fileList={[]}
+        uploading={false}
       />
 
     </PageHeaderWrapper>
