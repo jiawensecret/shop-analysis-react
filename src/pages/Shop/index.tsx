@@ -49,6 +49,9 @@ const handleUpdate = async (fields: FormValueType) => {
       code: fields.code,
       uri: fields.uri,
       charge_percent: fields.charge_percent,
+      dxm_id:fields.dxm_id,
+      client_id:fields.client_id,
+      client_password:fields.client_password,
     });
     hide();
 
@@ -104,22 +107,26 @@ const TableList: React.FC<{}> = () => {
       dataIndex: 'person_name',
       valueType: 'textarea',
       hideInForm:true,
+      hideInSearch:true,
     },
     {
       title: '对应收款账号',
       dataIndex: 'account_name',
       valueType: 'textarea',
-      hideInForm: true
+      hideInForm: true,
+      hideInSearch:true,
     },
     {
       title: '描述',
       dataIndex: 'desc',
       valueType: 'textarea',
+      hideInSearch:true,
     },
     {
       title: 'url地址',
       dataIndex: 'uri',
       valueType: 'textarea',
+      hideInSearch:true,
     },
     {
       title: '创建时间',

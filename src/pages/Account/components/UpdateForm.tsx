@@ -86,7 +86,9 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
         <FormItem name="password" label="账号密码">
           <Input placeholder="请输入"/>
         </FormItem>
-        <FormItem name="charge_percent" label="账号费率">
+        <FormItem name="charge_percent" label="账号费率"
+          rules={[{ required: true, message: '请选择请输入费率 用小数表示！' }]}
+        >
           <Input placeholder="请输入费率 例如0.01"/>
         </FormItem>
         <FormItem name="client_id" label="账号client id">

@@ -18,6 +18,9 @@ export interface FormValueType extends Partial<TableListItem> {
   account_name?: string;
   person?: object;
   account?: object;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   charge_percent?: number;
 }
 
@@ -97,6 +100,21 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
             <Input placeholder="请输入"/>
           </FormItem>
           <FormItem name="uri" label="店铺url">
+            <Input placeholder="请输入"/>
+          </FormItem>
+          <FormItem name="dxm_id" label="店小秘编号"
+            rules={[{ required: true, message: '请输入店小秘店铺编号！' }]}
+          >
+            <Input placeholder="请输入"/>
+          </FormItem>
+          <FormItem name="client_id" label="client id"
+            rules={[{ required: true, message: '请输入client id！' }]}
+          >
+            <Input placeholder="请输入"/>
+          </FormItem>
+          <FormItem name="client_password" label="client secret"
+            rules={[{ required: true, message: '请输入client secret！' }]}
+          >
             <Input placeholder="请输入"/>
           </FormItem>
           <FormItem name="desc" label="店铺备注">

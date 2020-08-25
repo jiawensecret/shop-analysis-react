@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 
-import UpdateForm, { FormValueType } from './components/UpdateForm';
+import UpdateForm from './components/UpdateForm';
 import { OrderListItem } from './data.d';
 
 import { getOrders } from './service';
@@ -48,6 +48,14 @@ const TableList: React.FC<{}> = () => {
       dataIndex: 'status_text',
     },
     {
+      title: '是否核算',
+      dataIndex: 'is_volume',
+      valueEnum:{
+        0: { text: '未核算'},
+        1: { text: '已核算' },
+      }
+    },
+    {
       title: '下单时间',
       dataIndex: 'order_time',
       valueType: 'dateTime',
@@ -65,14 +73,14 @@ const TableList: React.FC<{}> = () => {
       valueType: 'option',
       render: (_, record) => (
         <>
-          <a
+          {/* <a
             onClick={() => {
               handleUpdateModalVisible(true);
               setUpdateFormValues(record);
             }}
           >
             查看详情
-          </a>
+          </a> */}
           <Divider type="vertical" />
         </>
       ),
@@ -90,17 +98,16 @@ const TableList: React.FC<{}> = () => {
         rowSelection={{}}
       />
     
-      {/* {updateFormValues && Object.keys(updateFormValues).length ? (
+      {updateFormValues && Object.keys(updateFormValues).length ? (
         <UpdateForm
           onCancel={() => {
             handleUpdateModalVisible(false);
-            setUpdateFormValues({})
-            
+            setUpdateFormValues({})  
           }}
           updateModalVisible={updateModalVisible}
           values={updateFormValues}
         />
-      ) : null} */}
+      ) : null}
       
       
     </PageHeaderWrapper>

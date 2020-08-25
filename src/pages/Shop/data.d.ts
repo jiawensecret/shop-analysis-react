@@ -11,6 +11,9 @@ export interface TableListItem {
   person: object;
   account: object;
   charge_percent: number;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   created_at: Date;
 }
 
@@ -33,6 +36,9 @@ export interface TableListParams {
   code?: string;
   desc?: string;
   uri?: string;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   person_name?: string;
   account_name?: string;
   charge_percent?: number;
@@ -50,6 +56,9 @@ export interface ShopListParams {
   code?: string;
   desc?: string;
   uri?: string;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   person_name?: string;
   account_name?: string;
   charge_percent?: number;
@@ -67,6 +76,9 @@ export interface ShopItem {
   code: string;
   desc: string;
   uri: string;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   person_name: string;
   account_name: string;
   person: object;

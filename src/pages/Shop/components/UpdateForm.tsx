@@ -19,6 +19,9 @@ export interface FormValueType extends Partial<TableListItem> {
   account_name?: string;
   person?: object;
   account?: object;
+  dxm_id?:string;
+  client_id?:string;
+  client_password?:string;
   charge_percent?: number;
 }
 
@@ -54,6 +57,9 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
     code: props.values.code,
     uri: props.values.uri,
     desc: props.values.desc,
+    dxm_id: props.values.dxm_id,
+    client_id: props.values.client_id,
+    client_password: props.values.client_password,
     person_id: props.values.person_id,
     account_id: props.values.account_id,
     charge_percent: props.values.charge_percent,
@@ -113,6 +119,21 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
           <FormItem name="uri" label="店铺url">
             <Input placeholder="请输入"/>
           </FormItem>
+          <FormItem name="dxm_id" label="店小秘编号"
+            rules={[{ required: true, message: '请输入店小秘店铺编号！' }]}
+          >
+            <Input placeholder="请输入"/>
+          </FormItem>
+          <FormItem name="client_id" label="client id"
+            rules={[{ required: true, message: '请输入client id！' }]}
+          >
+            <Input placeholder="请输入"/>
+          </FormItem>
+          <FormItem name="client_password" label="client secret"
+            rules={[{ required: true, message: '请输入client secret！' }]}
+          >
+            <Input placeholder="请输入"/>
+          </FormItem>
           <FormItem name="desc" label="店铺备注">
             <TextArea rows={3} placeholder="请输入至少五个字符" />
           </FormItem>
@@ -152,6 +173,9 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
           person_id: formVals.person_id,
           account_id: formVals.account_id,
           charge_percent:formVals.charge_percent,
+          dxm_id: formVals.dxm_id,
+          client_id: formVals.client_id,
+          client_password:formVals.client_password,
         }}
       >
         {renderContent()}

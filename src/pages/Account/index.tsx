@@ -82,12 +82,14 @@ const TableList: React.FC<{}> = () => {
       title: '账号费率',
       dataIndex: 'charge_percent',
       valueType: 'textarea',
+      hideInSearch:true,
       hideInForm:true,
     },
     {
       title: 'Clinet ID',
       dataIndex: 'client_id',
       valueType: 'textarea',
+      hideInSearch:true,
       hideInForm: true
     },
     {
@@ -120,7 +122,7 @@ const TableList: React.FC<{}> = () => {
   return (
     <PageHeaderWrapper>
       <ProTable<TableListItem>
-        headerTitle="店铺"
+        headerTitle="账号列表"
         actionRef={actionRef}
         rowKey="id"
         toolBarRender={(action, { selectedRows }) => [

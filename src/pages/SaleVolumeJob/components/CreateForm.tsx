@@ -58,8 +58,10 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
             })}
           </Select>
         </FormItem>
-        <FormItem name="exchange" label="汇率">
-          <Input placeholder="请输入价格"/>
+        <FormItem name="exchange" label="汇率"
+        rules={[{ required: true, message: '请输入汇率！' }]}
+        >
+          <Input placeholder="请输入汇率"/>
         </FormItem>
       </>
     )
@@ -79,7 +81,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
   return (
     <Modal
       destroyOnClose
-      title="创建店铺"
+      title="创建计算任务"
       visible={createModalVisible}
       footer={renderFooter()}
       onCancel={() => onCancel()}

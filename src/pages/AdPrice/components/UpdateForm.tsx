@@ -114,7 +114,7 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
   return (
     <Modal
       destroyOnClose
-      title="编辑账号"
+      title="编辑广告费用"
       visible={updateModalVisible}
       footer={renderFooter()}
       onCancel={() => onCancel()}

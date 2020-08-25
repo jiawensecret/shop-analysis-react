@@ -37,6 +37,7 @@ const TableList: React.FC<{}> = () => {
       title: '编号',
       dataIndex: 'id',
       valueType: 'textarea',
+      hideInSearch:true,
     },
     {
       title: 'excel文件',
@@ -60,6 +61,7 @@ const TableList: React.FC<{}> = () => {
       dataIndex: 'type',
       valueType: 'textarea',
       hideInForm: true,
+      hideInSearch:true,
       valueEnum:{
         'order': '订单',
         'transport':'物流信息',
@@ -70,6 +72,7 @@ const TableList: React.FC<{}> = () => {
       title: '错误',
       dataIndex: 'error_msg',
       valueType: 'textarea',
+      hideInSearch:true,
       hideInForm: true
     },
     {

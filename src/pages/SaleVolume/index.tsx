@@ -25,7 +25,7 @@ const TableList: React.FC<{}> = () => {
       dataIndex: 'month',
     },
     {
-      title: '销售额(美元)',
+      title: '销售额(人民币)',
       dataIndex: 'volume',
       hideInSearch:true
     },

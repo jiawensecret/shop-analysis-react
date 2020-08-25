@@ -46,67 +46,62 @@ export default defineConfig({
           routes: [
             {
               path: '/',
-              redirect: '/orders',
-            },
-            {
-              name: '店铺管理',
-              icon: 'table',
-              path: '/shop',
-              component: './Shop',
-            },
-            {
-              name: '人员管理',
-              icon: 'table',
-              path: '/person',
-              component: './Person',
-            },
-            {
-              name: '个人设置',
-              icon: 'smile',
-              path: '/accountsettings',
-              component: './AccountSettings',
+              redirect: '/setting/person',
             },
             {
               name: '支付账号管理',
-              icon: 'table',
+              icon: 'CreditCardOutlined',
               path: '/account',
               component: './Account',
             },
             {
               name: '广告费用管理',
-              icon: 'smile',
+              icon: 'DollarOutlined',
               path: '/ad-price',
               component: './AdPrice',
             },
             {
-              name: '数据导入',
-              icon: 'smile',
-              path: '/excel-job',
-              component: './ExcelJob',
-            },
-            {
               name: '订单列表',
-              icon: 'smile',
+              icon: 'BarcodeOutlined',
               path: '/orders',
               component: './Order',
             },
             {
               name: '绩效计算任务管理',
-              icon: 'smile',
+              icon: 'InteractionOutlined',
               path: '/sale-volume-job',
               component: './SaleVolumeJob',
             },
             {
               name: '绩效核算列表',
-              icon: 'smile',
+              icon: 'InsertRowRightOutlined',
               path: '/sale-volume',
               component: './SaleVolume',
             },
             {
-              name: '基础详情页',
-              icon: 'smile',
-              path: '/test',
-              component: './Test',
+              path: '/setting',
+              name: '设置',
+              icon: 'SettingOutlined',
+              routes: [
+                {
+                  name: '店铺管理',
+                  icon: 'BankOutlined',
+                  path: '/setting/shop',
+                  component: './Shop',
+                },
+                {
+                  name: '人员管理',
+                  icon: 'TeamOutlined',
+                  path: '/setting/person',
+                  component: './Person',
+                },
+                {
+                  name: '数据导入',
+                  icon: 'FileAddOutlined',
+                  path: '/setting/excel-job',
+                  component: './ExcelJob',
+                },
+              ]
             },
             {
               component: './404',

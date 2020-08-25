@@ -45,6 +45,7 @@ const TableList: React.FC<{}> = () => {
       title: '编号',
       dataIndex: 'id',
       valueType: 'textarea',
+      hideInSearch:true,
     },
     {
       title: '月份',
@@ -55,12 +56,12 @@ const TableList: React.FC<{}> = () => {
       title: '汇率(美元兑人民币)',
       dataIndex: 'exchange',
       valueType: 'textarea',
+      hideInSearch:true,
     },
     {
       title: '状态',
       dataIndex: 'status',
       valueType: 'textarea',
-      hideInForm:true,
       valueEnum:{
         0: { text: '处理中', status: 'Processing' },
         1: { text: '成功', status: 'Success' },
@@ -71,14 +72,15 @@ const TableList: React.FC<{}> = () => {
       title: '错误',
       dataIndex: 'error_msg',
       valueType: 'textarea',
-      hideInForm: true
+      hideInForm: true,
+      hideInSearch:true,
     },
     {
       title: '创建时间',
       dataIndex: 'created_at',
       hideInForm:true,
       valueType: 'dateTime',
-      hideInSearch: true
+      hideInSearch: true,
     },
   ];
 
