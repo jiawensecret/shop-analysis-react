@@ -69,12 +69,12 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <FormItem name="name" label="店铺名称"
             rules={[{ required: true, message: '请输入店铺名称！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="自定义的店铺名字"/>
           </FormItem>
           <FormItem name="code" label="店铺编号"
             rules={[{ required: true, message: '请输入店铺编号！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="[  ].myshopify.com"/>
           </FormItem>
           <FormItem name="person_id" label="管理人员"
             rules={[{ required: true, message: '请选择管理人员！' }]}
@@ -97,7 +97,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <FormItem name="charge_percent" label="店铺费率"
             rules={[{ required: true, message: '请输入店铺费率！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="店铺费率 小数表示 例如0.01"/>
           </FormItem>
           <FormItem name="uri" label="店铺url">
             <Input placeholder="请输入"/>
@@ -105,17 +105,17 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <FormItem name="dxm_id" label="店小秘编号"
             rules={[{ required: true, message: '请输入店小秘店铺编号！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="请输入店小秘店铺编号 如:1795201"/>
           </FormItem>
           <FormItem name="client_id" label="client id"
             rules={[{ required: true, message: '请输入client id！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="shopify后台 应用->管理专有应用->后台api api秘钥"/>
           </FormItem>
           <FormItem name="client_password" label="client secret"
             rules={[{ required: true, message: '请输入client secret！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="shopify后台 应用->管理专有应用->后台api api密码"/>
           </FormItem>
           <FormItem name="desc" label="店铺备注">
             <TextArea rows={4} placeholder="请输入至少五个字符" />
