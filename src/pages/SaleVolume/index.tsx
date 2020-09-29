@@ -25,13 +25,43 @@ const TableList: React.FC<{}> = () => {
       dataIndex: 'month',
     },
     {
-      title: '销售额(美元)',
+      title: '订单总价(美元)',
+      dataIndex: 'order_price',
+      hideInSearch:true
+    },
+    {
+      title: '实收(美元)',
       dataIndex: 'volume',
       hideInSearch:true
     },
     {
-      title: '成本(美元)',
-      dataIndex: 'total_cost',
+      title: '收款手续费(美元)',
+      dataIndex: 'pay_charge',
+      hideInSearch:true
+    },
+    {
+      title: '运费(美元)',
+      dataIndex: 'transport_price',
+      hideInSearch:true
+    },
+    {
+      title: '营销费用(美元)',
+      dataIndex: 'ad_price',
+      hideInSearch:true
+    },
+    {
+      title: '店铺手续费(美元)',
+      dataIndex: 'shop_charge',
+      hideInSearch:true
+    },
+    {
+      title: '采购成本(美元)',
+      dataIndex: 'cost_price',
+      hideInSearch:true
+    },
+    {
+      title: '退款(美元)',
+      dataIndex: 'refund',
       hideInSearch:true
     },
     {
@@ -58,10 +88,7 @@ const TableList: React.FC<{}> = () => {
       render: (_, record) => (
         <>
           <a
-            onClick={() => {
-              handleUpdateModalVisible(true);
-              setUpdateFormValues(record);
-            }}
+           href = {`/sale-volume-order?volume_id=${record.id}&month=${record.month}&name=${record.person_name}`} target="_blank"
           >
             查看详情
           </a>

@@ -73,8 +73,8 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
             })}
           </Select>
         </FormItem>
-        <FormItem name="price" label="价格">
-          <Input placeholder="请输入价格"/>
+        <FormItem name="price" label="费用">
+          <Input placeholder="请输入费用"/>
         </FormItem>
         <FormItem name="type" label="币种">
           <Select style={{ width: '100%' }} placeholder='请选择币种'>

@@ -84,7 +84,7 @@ const TableList: React.FC<{}> = () => {
       valueType: 'textarea',
     },
     {
-      title: '价格',
+      title: '费用',
       dataIndex: 'price',
       valueType: 'textarea',
     },

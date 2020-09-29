@@ -1,9 +1,10 @@
-export interface VolumeListItem {
+export interface VolumeOrderListItem {
   id: number;
-  person_id: number;
-  person_text:string;
+  order_id?: number;
+  sales_volume_id?: number;
+  shop_id?:string;
   month:string;
-  volume:string;
+  volume:number;
   total_cost:string;
   profit:string;
   exchange:string;
@@ -14,9 +15,15 @@ export interface VolumeListItem {
   shop_charge:number;
   pay_charge:number;
   refund:number;
-  person_name:string;
+  order_no?:string;
 
+  profit_show:number;
+  cost_price_show:number;
+  transport_price_show:number;
+  ad_price_show:number;
+  shop_charge_show:number;
 }
+
 
 export interface TableListPagination {
   total: number;
@@ -25,15 +32,17 @@ export interface TableListPagination {
 }
 
 export interface TableListData {
-  list: VolumeListItem[];
+  list: VolumeOrderListItem[];
   pagination: Partial<TableListPagination>;
 }
 
-export interface VolumeListParams {
+export interface VolumeOrderListParams {
   id?: number;
-  person_id?: number;
+  order_id?: number;
+  sales_volume_id?: number;
   month?:string;
-  volume?:string;
+  shop_id?:string;
+  volume?:number;
   total_cost?:string;
   profit?:string;
   exchange?:string;
@@ -45,7 +54,14 @@ export interface VolumeListParams {
   pay_charge?:number;
   refund?:number;
   pageSize?: number;
+  order_no?:string;
   currentPage?: number;
+
+  profit_show?:number;
+  cost_price_show?:number;
+  transport_price_show?:number;
+  ad_price_show?:number;
+  shop_charge_show?:number;
   filter?: { [key: string]: any[] };
   sorter?: { [key: string]: any };
 }

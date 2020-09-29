@@ -64,8 +64,9 @@ const TableList: React.FC<{}> = () => {
       hideInSearch:true,
       valueEnum:{
         'order': '订单',
-        'transport':'物流信息',
-        'transport_prot':'运输价格',
+        'transport':'物流跟踪',
+        'transport_price':'物流费用',
+        'support':'采购单',
       }
     },
     {

@@ -74,7 +74,7 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <FormItem name="code" label="店铺编号"
             rules={[{ required: true, message: '请输入店铺编号！' }]}
           >
-            <Input placeholder="[  ].myshopify.com"/>
+            <Input placeholder="" addonAfter=".myshopify.com"/>
           </FormItem>
           <FormItem name="person_id" label="管理人员"
             rules={[{ required: true, message: '请选择管理人员！' }]}
@@ -110,12 +110,12 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
           <FormItem name="client_id" label="client id"
             rules={[{ required: true, message: '请输入client id！' }]}
           >
-            <Input placeholder="shopify后台 应用->管理专有应用->后台api api秘钥"/>
+            <Input placeholder="应用->管理专有应用->后台api api秘钥"/>
           </FormItem>
           <FormItem name="client_password" label="client secret"
             rules={[{ required: true, message: '请输入client secret！' }]}
           >
-            <Input placeholder="shopify后台 应用->管理专有应用->后台api api密码"/>
+            <Input placeholder="应用->管理专有应用->后台api api密码"/>
           </FormItem>
           <FormItem name="desc" label="店铺备注">
             <TextArea rows={4} placeholder="请输入至少五个字符" />

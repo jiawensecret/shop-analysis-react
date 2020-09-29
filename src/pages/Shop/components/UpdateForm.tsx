@@ -95,7 +95,7 @@ const UpdateForm: React.FC<UpdateFormProps> = (props) => {
           <FormItem name="code" label="店铺编号"
             rules={[{ required: true, message: '请输入店铺编号！' }]}
           >
-            <Input placeholder="请输入"/>
+            <Input placeholder="请输入" addonAfter=".myshopify.com"/>
           </FormItem>
           <FormItem name="person_id" label="管理人员">
             <Select style={{ width: '100%' }}>

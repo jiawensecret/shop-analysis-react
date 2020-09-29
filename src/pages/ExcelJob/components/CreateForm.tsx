@@ -107,8 +107,9 @@ const CreateForm: React.FC<CreateFormProps> = (props) => {
         >
             <Select style={{ width: '100%' }} placeholder='请选择类型'>
                 <Option value="order">订单</Option>
-                <Option value="transport">物流</Option>
-                <Option value="transport_price">物流价格</Option>
+                <Option value="transport">物流跟踪</Option>
+                <Option value="transport_price">物流费用</Option>
+                <Option value="support">采购单</Option>
             </Select>
         </FormItem>
         

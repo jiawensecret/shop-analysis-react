@@ -49,28 +49,10 @@ export default defineConfig({
               redirect: '/setting/person',
             },
             {
-              name: '支付账号管理',
-              icon: 'CreditCardOutlined',
-              path: '/account',
-              component: './Account',
-            },
-            {
-              name: '广告费用管理',
-              icon: 'DollarOutlined',
-              path: '/ad-price',
-              component: './AdPrice',
-            },
-            {
               name: '订单列表',
               icon: 'BarcodeOutlined',
               path: '/orders',
               component: './Order',
-            },
-            {
-              name: '绩效计算任务管理',
-              icon: 'InteractionOutlined',
-              path: '/sale-volume-job',
-              component: './SaleVolumeJob',
             },
             {
               name: '绩效核算列表',
@@ -79,10 +61,23 @@ export default defineConfig({
               component: './SaleVolume',
             },
             {
+              name: '利润核算详情列表',
+              icon: 'InsertRowRightOutlined',
+              hideInMenu:true,
+              path: '/sale-volume-order',
+              component: './SaleVolumeOrder',
+            },
+            {
               path: '/setting',
               name: '设置',
               icon: 'SettingOutlined',
               routes: [
+                {
+                  name: '人员管理',
+                  icon: 'TeamOutlined',
+                  path: '/setting/person',
+                  component: './Person',
+                },
                 {
                   name: '店铺管理',
                   icon: 'BankOutlined',
@@ -90,10 +85,22 @@ export default defineConfig({
                   component: './Shop',
                 },
                 {
-                  name: '人员管理',
-                  icon: 'TeamOutlined',
-                  path: '/setting/person',
-                  component: './Person',
+                  name: '支付账号管理',
+                  icon: 'CreditCardOutlined',
+                  path: '/setting/account',
+                  component: './Account',
+                },
+                {
+                  name: '广告费用管理',
+                  icon: 'DollarOutlined',
+                  path: '/setting/ad-price',
+                  component: './AdPrice',
+                },
+                {
+                  name: '绩效计算任务管理',
+                  icon: 'InteractionOutlined',
+                  path: '/setting/sale-volume-job',
+                  component: './SaleVolumeJob',
                 },
                 {
                   name: '数据导入',
