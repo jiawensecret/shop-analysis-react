@@ -97,6 +97,11 @@ export default defineConfig({
                   component: './AdPrice',
                 },
                 {
+                  name: '店铺费用管理',
+                  path: '/setting/shop-price',
+                  component: './ShopPrice',
+                },
+                {
                   name: '绩效计算任务管理',
                   icon: 'InteractionOutlined',
                   path: '/setting/sale-volume-job',

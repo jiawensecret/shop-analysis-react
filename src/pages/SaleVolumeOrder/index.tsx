@@ -36,8 +36,7 @@ const TableList: React.FC<{}> = () => {
     },
     {
       title: '店铺',
-      dataIndex: 'shop_id',
-      valueEnum: obj
+      dataIndex: 'shop_name',
     },
     {
       title: '订单生成时间',
